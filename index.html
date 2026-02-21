@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Campanha Solidária</title>
+  <meta name="description" content="Campanha de ajuda para uma criança especial. Doe via PIX e compartilhe."/>
+  <meta name="theme-color" content="#0ea5e9"/>
+
+  <style>
+    :root{
+      --bg:#071019;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.10);
+      --border: rgba(255,255,255,.14);
+      --text:#eaf2ff;
+      --muted: rgba(234,242,255,.72);
+      --brand:#22c55e;
+      --brand2:#0ea5e9;
+      --danger:#fb7185;
+      --radius:18px;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+      background: radial-gradient(1200px 800px at 30% 0%, rgba(14,165,233,.18), transparent 60%),
+                  radial-gradient(900px 600px at 80% 10%, rgba(34,197,94,.14), transparent 55%),
+                  linear-gradient(180deg, #060d15, var(--bg));
+      color:var(--text);
+      min-height:100vh;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 22px 16px 54px;
+    }
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 10px 2px 18px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border-radius:999px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: var(--brand2);
+      box-shadow: 0 0 0 6px rgba(14,165,233,.18);
+    }
+    .top-actions{
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .btn{
+      cursor:pointer;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: .15s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); }
+    .btn.primary{
+      border-color: rgba(34,197,94,.45);
+      background: linear-gradient(180deg, rgba(34,197,94,.24), rgba(34,197,94,.10));
+    }
+    .btn.danger{
+      border-color: rgba(251,113,133,.45);
+      background: linear-gradient(180deg, rgba(251,113,133,.22), rgba(251,113,133,.08));
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 16px;
+    }
+    @media (max-width: 920px){
+      .grid{ grid-template-columns:1fr; }
+    }
+
+    .card{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card .inner{ padding: 16px; }
+    .hero{
+      display:grid;
+      grid-template-columns: 180px 1fr;
+      gap:16px;
+      align-items:center;
+    }
+    @media (max-width: 520px){
+      .hero{ grid-template-columns:1fr; }
+    }
+    .photo{
+      width:180px;height:180px;border-radius:18px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      overflow:hidden;
+      position:relative;
+    }
+    .photo img{
+      width:100%; height:100%; object-fit:cover;
+      display:block;
+    }
+    h1{ margin:0; font-size: clamp(22px, 3vw, 32px); line-height:1.15; }
+    .sub{ color:var(--muted); margin-top:8px; line-height:1.55; }
+    .pill-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+    .pill{
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-weight:700;
+      font-size: 13px;
+    }
+
+    .progress-wrap{
+      margin-top:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .bar{
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .bar > div{
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, rgba(14,165,233,.95), rgba(34,197,94,.95));
+      border-radius: 999px;
+      transition: width .6s ease;
+    }
+    .numbers{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      margin-top:10px;
+      color: var(--muted);
+      font-weight:700;
+      flex-wrap:wrap;
+    }
+    .numbers b{ color: var(--text); }
+    .section-title{
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+      font-weight: 800;
+    }
+
+    .pixbox{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .pixkey{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,.25);
+      color: var(--text);
+      overflow:auto;
+      white-space:nowrap;
+    }
+    .small{ font-size: 13px; color: var(--muted); line-height:1.5; }
+    .list{
+      margin:0; padding-left: 18px;
+      color: var(--muted);
+      line-height:1.6;
+    }
+    details{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 14px;
+      padding: 12px 14px;
+    }
+    details summary{
+      cursor:pointer;
+      font-weight:800;
+      color: var(--text);
+      outline:none;
+    }
+    footer{
+      margin-top:18px;
+      color: rgba(234,242,255,.55);
+      font-size: 12px;
+      line-height:1.55;
+      text-align:center;
+    }
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,.68);
+      border: 1px solid rgba(255,255,255,.16);
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--text);
+      font-weight: 800;
+      opacity: 0;
+      pointer-events:none;
+      transition: .2s ease;
+      z-index: 50;
+    }
+    .toast.show{ opacity: 1; transform: translateX(-50%) translateY(-4px); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge"><span class="dot"></span> Campanha Solidária</div>
+      <div class="top-actions">
+        <a class="btn" id="btnShare" href="#" role="button">📣 Compartilhar</a>
+        <a class="btn primary" id="btnWhats" href="#" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- COLUNA ESQUERDA -->
+      <section class="card">
+        <div class="inner">
+          <div class="hero">
+            <div class="photo">
+              <!-- Troque a foto por assets/crianca.jpg -->
+              <img src="assets/crianca.jpg" alt="Foto da criança" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=&quot;padding:14px;color:rgba(234,242,255,.75);font-weight:800;line-height:1.4;&quot;>Adicione uma foto em <b>assets/crianca.jpg</b><br/>para aparecer aqui.</div>';">
+            </div>
+
+            <div>
+              <h1>Ajude a <span id="childName">[NOME DA CRIANÇA]</span> 💙</h1>
+              <div class="sub" id="story">
+                Estamos fazendo essa campanha para ajudar a <b>[NOME DA CRIANÇA]</b> com <b>[OBJETIVO]</b>.
+                Qualquer valor faz diferença. Se você não puder doar, por favor compartilhe.
+              </div>
+
+              <div class="pill-row">
+                <span class="pill">📍 <span id="city">[CIDADE/UF]</span></span>
+                <span class="pill">🎯 Meta: R$ <span id="goal">15.000,00</span></span>
+                <span class="pill">⏳ Prazo: <span id="deadline">[DATA OU “o quanto antes”]</span></span>
+              </div>
+
+              <div class="progress-wrap">
+                <div class="section-title">Progresso da campanha</div>
+                <div class="bar" aria-label="Barra de progresso"><div id="barFill"></div></div>
+                <div class="numbers">
+                  <span>Arrecadado: <b>R$ <span id="raised">0,00</span></b></span>
+                  <span>Falta: <b>R$ <span id="missing">15.000,00</span></b></span>
+                </div>
+                <div class="small" style="margin-top:8px;">
+                  Atualização manual: edite o valor <b>arrecadado</b> no final do arquivo (seção “CONFIG”).
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:14px;">
+            <div class="section-title">Como você pode ajudar</div>
+            <ul class="list">
+              <li>Doando via PIX (qualquer valor já ajuda muito).</li>
+              <li>Compartilhando essa página com amigos, grupos e família.</li>
+              <li>Se preferir, entre em contato para ajudar de outra forma.</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:14px;">
+            <details open>
+              <summary>📌 Transparência (comprovantes e atualizações)</summary>
+              <div class="small" style="margin-top:10px;">
+                Aqui você pode colocar prints/links de comprovantes e atualizações:
+              </div>
+              <ul class="list">
+                <li>✅ 20/02/2026 — Início da campanha</li>
+                <li>🔁 Atualizações semanais (ou sempre que entrar doações)</li>
+                <li>📎 Adicione imagens na pasta <b>assets</b> e coloque links aqui</li>
+              </ul>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLUNA DIREITA -->
+      <aside class="card">
+        <div class="inner">
+          <div class="section-title">Doe via PIX</div>
+
+          <div class="pixbox">
+            <div class="small">
+              Chave PIX (copie e cole no seu banco):
+            </div>
+            <div class="pixkey" id="pixKey">[SUA CHAVE PIX AQUI]</div>
+
+            <button class="btn primary" id="btnCopy">📋 Copiar chave PIX</button>
+
+            <div class="small">
+              Se quiser, você pode colocar também:
+              <ul class="list">
+                <li>Nome do responsável</li>
+                <li>Banco / instituição</li>
+                <li>Contato para dúvidas</li>
+              </ul>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+              <a class="btn" id="btnInsta" href="#" target="_blank" rel="noopener">📷 Instagram</a>
+              <a class="btn danger" id="btnContact" href="#" target="_blank" rel="noopener">☎️ Contato</a>
+            </div>
+
+            <div style="margin-top:14px;">
+              <details>
+                <summary>🧾 Nota importante</summary>
+                <div class="small" style="margin-top:10px;">
+                  Não publique dados sensíveis da criança (documentos completos, endereço, etc.).
+                  Se precisar provar algo, mostre só o necessário.
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      Feito com carinho para ajudar • Hospedado no GitHub Pages •
+      <span id="year"></span>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast">Copiado!</div>
+
+  <script>
+    // =========================
+    // CONFIG (edite aqui)
+    // =========================
+    const CONFIG = {
+      childName: "[NOME DA CRIANÇA]",
+      city: "[CIDADE/UF]",
+      objective: "[OBJETIVO] (ex: terapias, cadeira de rodas, tratamento, exame, cirurgia)",
+      deadline: "[DATA OU “o quanto antes”]",
+      goal: 15000,        // meta (número)
+      raised: 0,          // arrecadado (número)
+      pixKey: "[SUA CHAVE PIX AQUI]",
+      whatsappNumber: "55DDDNÚMERO", // ex: 5511999999999
+      instagramUrl: "https://instagram.com/",
+      contactUrl: "https://wa.me/55DDDNÚMERO"
+    };
+
+    // Texto padrão compartilhamento
+    function shareText(){
+      const url = location.href;
+      return `Campanha para ajudar ${CONFIG.childName} 💙\nObjetivo: ${CONFIG.objective}\nDoe via PIX: ${CONFIG.pixKey}\nLink: ${url}`;
+    }
+
+    // =========================
+    // Render
+    // =========================
+    const fmt = (n) => n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    document.getElementById("childName").textContent = CONFIG.childName;
+    document.getElementById("city").textContent = CONFIG.city;
+    document.getElementById("deadline").textContent = CONFIG.deadline;
+    document.getElementById("goal").textContent = fmt(CONFIG.goal);
+    document.getElementById("raised").textContent = fmt(CONFIG.raised);
+
+    const missing = Math.max(0, CONFIG.goal - CONFIG.raised);
+    document.getElementById("missing").textContent = fmt(missing);
+
+    const story = `Estamos fazendo essa campanha para ajudar ${CONFIG.childName} com ${CONFIG.objective}.
+Qualquer valor faz diferença. Se você não puder doar, por favor compartilhe.`;
+    document.getElementById("story").innerHTML = story.replace(/\n/g, "<br/>");
+
+    const pct = (CONFIG.goal > 0) ? Math.max(0, Math.min(100, (CONFIG.raised / CONFIG.goal) * 100)) : 0;
+    document.getElementById("barFill").style.width = pct.toFixed(1) + "%";
+
+    document.getElementById("pixKey").textContent = CONFIG.pixKey;
+
+    document.getElementById("btnWhats").href = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(shareText())}`;
+    document.getElementById("btnInsta").href = CONFIG.instagramUrl;
+    document.getElementById("btnContact").href = CONFIG.contactUrl;
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // =========================
+    // Ações
+    // =========================
+    const toast = document.getElementById("toast");
+    const showToast = (msg="Copiado!") => {
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1400);
+    };
+
+    document.getElementById("btnCopy").addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(CONFIG.pixKey);
+        showToast("PIX copiado!");
+      }catch(e){
+        // fallback
+        const tmp = document.createElement("textarea");
+        tmp.value = CONFIG.pixKey;
+        document.body.appendChild(tmp);
+        tmp.select();
+        document.execCommand("copy");
+        tmp.remove();
+        showToast("PIX copiado!");
+      }
+    });
+
+    document.getElementById("btnShare").addEventListener("click", async (ev) => {
+      ev.preventDefault();
+      const text = shareText();
+      try{
+        if (navigator.share){
+          await navigator.share({ title: "Campanha Solidária", text, url: location.href });
+        } else {
+          await navigator.clipboard.writeText(text);
+          showToast("Texto de compartilhamento copiado!");
+        }
+      }catch(err){
+        await navigator.clipboard.writeText(text);
+        showToast("Texto copiado!");
+      }
+    });
+  </script>
+</body>
+</html>
