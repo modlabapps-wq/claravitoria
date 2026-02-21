@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Campanha Solidária • Clara Vitória</title>
   <meta name="description" content="Ajude a Clara Vitória com Fortini Plus Sem Sabor 400g. Doe via PIX ou compre e entregue. Compartilhe o link."/>
@@ -20,6 +20,7 @@
       --brand:#22c55e;
       --brand2:#0ea5e9;
       --danger:#fb7185;
+      --warn:#fbbf24;
       --radius:18px;
       --shadow: 0 18px 60px rgba(0,0,0,.45);
     }
@@ -40,9 +41,9 @@
     img, video{ max-width:100%; display:block; }
 
     .wrap{
-      max-width: 1120px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 18px 14px 50px;
+      padding: 18px 14px 54px;
     }
 
     .topbar{
@@ -63,7 +64,7 @@
       background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
       border-radius: 999px;
       box-shadow: 0 10px 30px rgba(0,0,0,.25);
-      font-weight: 900;
+      font-weight: 950;
       letter-spacing: .2px;
       white-space: nowrap;
     }
@@ -88,7 +89,7 @@
       color: var(--text);
       padding: 10px 14px;
       border-radius: 12px;
-      font-weight: 900;
+      font-weight: 950;
       transition: .15s ease;
       display:inline-flex;
       align-items:center;
@@ -104,9 +105,9 @@
       border-color: rgba(14,165,233,.45);
       background: linear-gradient(180deg, rgba(14,165,233,.22), rgba(14,165,233,.08));
     }
-    .btn.danger{
-      border-color: rgba(251,113,133,.45);
-      background: linear-gradient(180deg, rgba(251,113,133,.22), rgba(251,113,133,.08));
+    .btn.warn{
+      border-color: rgba(251,191,36,.45);
+      background: linear-gradient(180deg, rgba(251,191,36,.22), rgba(251,191,36,.08));
     }
 
     .grid{
@@ -130,7 +131,7 @@
 
     .hero{
       display:grid;
-      grid-template-columns: 190px 1fr;
+      grid-template-columns: 200px 1fr;
       gap: 16px;
       align-items:center;
     }
@@ -139,26 +140,27 @@
     }
 
     .photo{
-      width:190px; height:190px;
+      width:200px; height:200px;
       border-radius: 18px;
       border:1px solid var(--border);
       overflow:hidden;
       background: rgba(255,255,255,.05);
     }
+    .photo img{ width:100%; height:100%; object-fit:cover; }
     @media (max-width: 640px){
       .photo{ width:100%; height: 320px; }
     }
 
     h1{
       margin:0;
-      font-size: clamp(22px, 3vw, 34px);
+      font-size: clamp(22px, 3vw, 36px);
       line-height: 1.12;
       letter-spacing: -0.02em;
     }
     .lead{
       margin-top:10px;
       color: var(--muted);
-      line-height: 1.65;
+      line-height: 1.68;
       font-size: 15px;
     }
 
@@ -174,7 +176,7 @@
       border:1px solid var(--border);
       background: rgba(255,255,255,.06);
       color: var(--muted);
-      font-weight: 900;
+      font-weight: 950;
       font-size: 13px;
     }
 
@@ -216,17 +218,67 @@
       flex-wrap:wrap;
       margin-top:10px;
       color: var(--muted);
-      font-weight: 900;
+      font-weight: 950;
     }
     .nums b{ color: var(--text); }
 
+    .kpi-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    @media (max-width: 900px){
+      .kpi-grid{ grid-template-columns: 1fr; }
+    }
+    .kpi{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      padding: 12px;
+    }
+    .kpi .label{
+      color: rgba(238,244,255,.68);
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 950;
+    }
+    .kpi .value{
+      margin-top:6px;
+      font-weight: 1000;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+    .kpi .sub{
+      margin-top:6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+      font-weight: 800;
+    }
+    .badge-urgent{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(251,113,133,.45);
+      background: linear-gradient(180deg, rgba(251,113,133,.18), rgba(251,113,133,.06));
+      font-weight: 950;
+      font-size: 12px;
+      color: rgba(255,255,255,.92);
+      white-space: nowrap;
+    }
+
     .split{
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.05fr .95fr;
       gap: 12px;
+      margin-top: 14px;
     }
-    @media (max-width: 640px){
-      .split{ grid-template-columns:1fr; }
+    @media (max-width: 860px){
+      .split{ grid-template-columns: 1fr; }
     }
 
     .product{
@@ -237,10 +289,10 @@
     }
     .product img{
       width:100%;
-      height: 230px;
+      height: 240px;
       object-fit: contain;
       background: rgba(0,0,0,.20);
-      padding: 10px;
+      padding: 12px;
     }
     .product .meta{
       padding: 12px 12px 14px;
@@ -267,13 +319,38 @@
     }
     .pixkey{
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
-      font-weight: 900;
+      font-weight: 950;
       word-break: break-all;
       color: var(--text);
       font-size: 13px;
       line-height: 1.55;
     }
     .small{ color: var(--muted); font-size: 13px; line-height: 1.6; }
+
+    .qr{
+      display:grid;
+      grid-template-columns: 110px 1fr;
+      gap: 12px;
+      align-items:center;
+      margin-top: 10px;
+    }
+    @media (max-width: 420px){
+      .qr{ grid-template-columns: 1fr; }
+    }
+    .qr img{
+      width:110px;
+      height:110px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+    }
+
+    .quick{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
 
     .media-grid{
       display:grid;
@@ -295,6 +372,7 @@
       height: 280px;
       object-fit: cover;
       background: rgba(0,0,0,.18);
+      cursor: zoom-in;
     }
     .media video{
       width:100%;
@@ -304,7 +382,7 @@
       padding: 10px 12px;
       border-top: 1px solid rgba(255,255,255,.10);
       color: rgba(238,244,255,.74);
-      font-weight: 900;
+      font-weight: 950;
       font-size: 13px;
     }
 
@@ -339,13 +417,64 @@
       padding: 10px 14px;
       border-radius: 999px;
       color: var(--text);
-      font-weight: 950;
+      font-weight: 1000;
       opacity: 0;
       pointer-events:none;
       transition: .2s ease;
-      z-index: 50;
+      z-index: 60;
     }
     .toast.show{ opacity: 1; transform: translateX(-50%) translateY(-4px); }
+
+    .modal{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.78);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      z-index: 70;
+    }
+    .modal.show{ display:flex; }
+    .modal .box{
+      width: min(980px, 100%);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(10,14,22,.72);
+      box-shadow: 0 30px 120px rgba(0,0,0,.65);
+      overflow:hidden;
+    }
+    .modal .top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .modal .top .t{
+      font-weight: 950;
+      color: rgba(238,244,255,.88);
+      font-size: 13px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+    .modal .close{
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 8px 10px;
+      font-weight: 950;
+      cursor:pointer;
+    }
+    .modal img{
+      width:100%;
+      height: auto;
+      max-height: 78vh;
+      object-fit: contain;
+      background: rgba(0,0,0,.30);
+    }
   </style>
 </head>
 
@@ -364,47 +493,70 @@
         <div class="inner">
           <div class="hero">
             <div class="photo">
-              <img src="Clara-foto-2.jpeg" alt="Clara Vitória" />
+              <img src="Clara-foto-2.jpeg" alt="Clara Vitória"/>
             </div>
+
             <div>
-              <h1>Ajude a Clara Vitória de Jesus Melo 💙</h1>
+              <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+                <h1 style="flex:1 1 auto;">Ajude a Clara Vitória de Jesus Melo 💙</h1>
+                <span class="badge-urgent">⚡ Ajuda urgente</span>
+              </div>
 
               <div class="lead">
                 A Clara Vitória tem <b>3 anos e 11 meses</b> e possui <b>Síndrome de Moebius</b>, uma condição neurológica congênita rara
-                que pode afetar os nervos cranianos (especialmente VI e VII), causando <b>paralisia facial</b>, dificuldade no movimento lateral dos olhos
-                e <b>dificuldades na alimentação e fala</b>.
+                que pode causar <b>paralisia facial</b>, dificuldade no movimento lateral dos olhos e <b>dificuldades na alimentação e fala</b>.
                 <br><br>
-                Atualmente, a Clara se alimenta por <b>sonda</b>, e estamos arrecadando para comprar o leite que ela usa:
+                Atualmente, a Clara se alimenta por <b>sonda</b>. Estamos arrecadando para comprar o leite que ela usa:
                 <b>Fortini Plus Sem Sabor 400g</b>.
               </div>
 
               <div class="pillrow">
                 <span class="pill">👩‍👧 Responsável: Maria Luiza Melo Nogueira</span>
                 <span class="pill">📍 São Paulo, SP</span>
-                <span class="pill">🎯 Meta: R$ <span id="goal">400,00</span></span>
+                <span class="pill">🥫 1 lata dura ~5 dias</span>
               </div>
 
               <div class="progress">
-                <div class="section-title">Progresso</div>
+                <div class="section-title">Progresso da campanha</div>
                 <div class="bar" aria-label="Barra de progresso"><div id="barFill"></div></div>
                 <div class="nums">
-                  <span>Arrecadado: <b>R$ <span id="raised">20,00</span></b></span>
-                  <span>Falta: <b>R$ <span id="missing">380,00</span></b></span>
+                  <span>Meta: <b>R$ <span id="goal">1.300,00</span></b></span>
+                  <span>Arrecadado: <b>R$ <span id="raised">90,00</span></b></span>
+                  <span>Falta: <b>R$ <span id="missing">1.210,00</span></b></span>
+                </div>
+              </div>
+
+              <div class="kpi-grid">
+                <div class="kpi">
+                  <div class="label">Necessidade por mês</div>
+                  <div class="value"><span id="cansPerMonth">6</span> latas</div>
+                  <div class="sub">1 lata dura ~5 dias → 30 dias ≈ 6 latas/mês.</div>
+                </div>
+
+                <div class="kpi">
+                  <div class="label">Situação atual</div>
+                  <div class="value">Temos <span id="haveCans">1</span> lata</div>
+                  <div class="sub">Para este mês, faltam <b><span id="needMoreCans">5</span> latas</b>.</div>
+                </div>
+
+                <div class="kpi">
+                  <div class="label">Pessoas ajudando</div>
+                  <div class="value">R$ <span id="raised2">90,00</span> arrecadados</div>
+                  <div class="sub">Equivale a aproximadamente <b><span id="peopleEst">9</span> contribuições de R$10</b> (estimativa).</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div style="height:14px;"></div>
-
           <div class="split">
             <section class="product">
-              <img src="fortini-plus.jpg" alt="Fortini Plus Sem Sabor 400g" />
+              <img src="fortini-plus.jpg" alt="Fortini Plus Sem Sabor 400g"/>
               <div class="meta">
                 <h3>Fortini Plus • Sem Sabor • 400g</h3>
                 <div class="price">
-                  Preço médio de referência: <b>~R$ 86,00</b> (pode variar por loja e promoções).<br>
-                  Se preferir, você pode <b>comprar e entregar</b> — fale conosco no WhatsApp.
+                  1 lata (400g) dura em média <b>5 dias</b>.
+                  <br>
+                  Se preferir, você pode <b>comprar o leite e combinar a entrega</b> pelo WhatsApp.
                 </div>
                 <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
                   <a class="btn primary" id="btnBuyWhats" href="#" target="_blank" rel="noopener">🛒 Quero comprar e entregar</a>
@@ -415,18 +567,30 @@
             <section class="card" style="box-shadow:none; background:transparent; border:none; padding:0;">
               <div class="section-title">Doe via PIX</div>
               <div class="pixbox">
-                <div class="small">
-                  Chave PIX (copie e cole no app do seu banco):
-                </div>
+                <div class="small">Chave PIX:</div>
                 <div class="pixkey" id="pixKey">marialuizamele20@gmail.com</div>
 
-                <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
-                  <button class="btn primary" id="btnCopyPix">📋 Copiar PIX</button>
-                  <a class="btn info" id="btnWhatsPix" href="#" target="_blank" rel="noopener">💬 Enviar PIX no WhatsApp</a>
+                <div class="qr">
+                  <img id="qrImg" alt="QR Code PIX"/>
+                  <div class="small">
+                    Aponte a câmera para o QR Code ou copie a chave PIX.
+                    <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+                      <button class="btn primary" id="btnCopyPix">📋 Copiar PIX</button>
+                      <a class="btn info" id="btnWhatsPix" href="#" target="_blank" rel="noopener">💬 Enviar PIX no WhatsApp</a>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="small" style="margin-top:10px;">
-                  Caso queira confirmar a história ou tirar dúvidas, pode falar direto no WhatsApp.
+                <div class="section-title" style="margin-top:14px;">Doação rápida</div>
+                <div class="quick">
+                  <a class="btn warn" id="btn10" href="#" target="_blank" rel="noopener">R$10</a>
+                  <a class="btn warn" id="btn20" href="#" target="_blank" rel="noopener">R$20</a>
+                  <a class="btn warn" id="btn50" href="#" target="_blank" rel="noopener">R$50</a>
+                  <a class="btn warn" id="btn100" href="#" target="_blank" rel="noopener">R$100</a>
+                </div>
+
+                <div class="small" style="margin-top:12px;">
+                  Para tirar dúvidas e confirmar a campanha, fale direto no WhatsApp.
                 </div>
               </div>
             </section>
@@ -437,11 +601,11 @@
           <div class="section-title">Fotos e vídeos</div>
           <div class="media-grid">
             <div class="media">
-              <img src="Clara-foto-1.jpeg" alt="Clara Vitória - foto 1" />
+              <img class="zoomable" src="Clara-foto-1.jpeg" alt="Clara Vitória - foto 1" data-title="Clara Vitória • Foto 1"/>
               <div class="cap">📷 Foto 1</div>
             </div>
             <div class="media">
-              <img src="Clara-foto-2.jpeg" alt="Clara Vitória - foto 2" />
+              <img class="zoomable" src="Clara-foto-2.jpeg" alt="Clara Vitória - foto 2" data-title="Clara Vitória • Foto 2"/>
               <div class="cap">📷 Foto 2</div>
             </div>
             <div class="media">
@@ -466,8 +630,9 @@
             <button class="btn info" id="btnCopyMsg">📋 Copiar texto</button>
             <a class="btn primary" id="btnSendMsg" href="#" target="_blank" rel="noopener">🚀 Enviar no WhatsApp</a>
           </div>
+
           <div class="small" style="margin-top:10px;">
-            Link do site: <span id="siteLink" style="font-weight:900;"></span>
+            Link do site: <span id="siteLink" style="font-weight:950;"></span>
           </div>
         </div>
       </main>
@@ -487,17 +652,17 @@
 
           <div style="height:14px;"></div>
 
-          <div class="section-title">Objetivo</div>
-          <div class="small">
-            Comprar <b>Fortini Plus Sem Sabor 400g</b> para alimentação por sonda.
-            Se você preferir, pode comprar o leite e combinar a entrega pelo WhatsApp.
+          <div class="section-title">PIX</div>
+          <div class="pixbox">
+            <div class="pixkey">marialuizamele20@gmail.com</div>
           </div>
 
           <div style="height:14px;"></div>
 
-          <div class="section-title">Chave PIX</div>
-          <div class="pixbox">
-            <div class="pixkey">marialuizamele20@gmail.com</div>
+          <div class="section-title">Objetivo</div>
+          <div class="small">
+            Comprar <b>Fortini Plus Sem Sabor 400g</b> para alimentação por sonda.
+            Se preferir, você pode comprar o leite e combinar a entrega pelo WhatsApp.
           </div>
         </div>
       </aside>
@@ -510,15 +675,29 @@
 
   <div class="toast" id="toast">Copiado!</div>
 
+  <div class="modal" id="modal">
+    <div class="box">
+      <div class="top">
+        <div class="t" id="modalTitle">Imagem</div>
+        <button class="close" id="modalClose">Fechar ✕</button>
+      </div>
+      <img id="modalImg" alt="Imagem ampliada"/>
+    </div>
+  </div>
+
   <script>
     const CONFIG = {
-      goal: 400,
-      raised: 20,
+      goal: 1300,
+      raised: 90,
       pixKey: "marialuizamele20@gmail.com",
       whatsapp: "5511993359677",
       motherName: "Maria Luiza Melo Nogueira",
       childName: "Clara Vitória de Jesus Melo",
-      productName: "Fortini Plus Sem Sabor 400g"
+      productName: "Fortini Plus Sem Sabor 400g",
+      canLastsDays: 5,
+      monthDays: 30,
+      currentCans: 1,
+      peopleEquivalentUnit: 10
     };
 
     const fmt = (n) => n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -545,9 +724,15 @@
       }
     }
 
+    function calcCansPerMonth(){
+      return Math.ceil(CONFIG.monthDays / CONFIG.canLastsDays);
+    }
+
     function buildShareText(){
       const url = location.href;
       const missing = Math.max(0, CONFIG.goal - CONFIG.raised);
+      const cansPerMonth = calcCansPerMonth();
+      const needMoreCans = Math.max(0, cansPerMonth - CONFIG.currentCans);
 
       return (
 `Campanha Solidária • Ajude a ${CONFIG.childName} 💙
@@ -558,6 +743,9 @@ Estamos arrecadando para comprar o leite ${CONFIG.productName}.
 Meta: R$ ${fmt(CONFIG.goal)}
 Arrecadado: R$ ${fmt(CONFIG.raised)}
 Falta: R$ ${fmt(missing)}
+
+Consumo: 1 lata dura ~${CONFIG.canLastsDays} dias → precisamos de ~${cansPerMonth} latas por mês.
+Hoje temos apenas ${CONFIG.currentCans} lata(s) e faltam ${needMoreCans} lata(s) para este mês.
 
 PIX (chave): ${CONFIG.pixKey}
 Responsável: ${CONFIG.motherName}
@@ -570,17 +758,31 @@ Se não puder doar, por favor compartilhe 🙏`
 
     const goalEl = document.getElementById("goal");
     const raisedEl = document.getElementById("raised");
+    const raised2El = document.getElementById("raised2");
     const missingEl = document.getElementById("missing");
     const barFill = document.getElementById("barFill");
 
     goalEl.textContent = fmt(CONFIG.goal);
     raisedEl.textContent = fmt(CONFIG.raised);
+    raised2El.textContent = fmt(CONFIG.raised);
 
     const missing = Math.max(0, CONFIG.goal - CONFIG.raised);
     missingEl.textContent = fmt(missing);
 
     const pct = (CONFIG.goal > 0) ? Math.max(0, Math.min(100, (CONFIG.raised / CONFIG.goal) * 100)) : 0;
     barFill.style.width = pct.toFixed(1) + "%";
+
+    const cansPerMonth = calcCansPerMonth();
+    document.getElementById("cansPerMonth").textContent = String(cansPerMonth);
+    document.getElementById("haveCans").textContent = String(CONFIG.currentCans);
+    document.getElementById("needMoreCans").textContent = String(Math.max(0, cansPerMonth - CONFIG.currentCans));
+
+    const peopleEst = Math.max(1, Math.round(CONFIG.raised / CONFIG.peopleEquivalentUnit));
+    document.getElementById("peopleEst").textContent = String(peopleEst);
+
+    const qrImg = document.getElementById("qrImg");
+    const qrText = encodeURIComponent(CONFIG.pixKey);
+    qrImg.src = `https://quickchart.io/qr?text=${qrText}&size=220`;
 
     const shareBox = document.getElementById("shareBox");
     const siteLink = document.getElementById("siteLink");
@@ -633,7 +835,41 @@ Se não puder doar, por favor compartilhe 🙏`
       showToast("Link copiado!");
     });
 
+    function setQuickDonation(btnId, value){
+      const btn = document.getElementById(btnId);
+      btn.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(
+        `Olá! Quero ajudar a Clara Vitória com R$ ${fmt(value)}. Vou fazer o PIX na chave ${CONFIG.pixKey}. Pode confirmar, por favor?`
+      )}`;
+    }
+    setQuickDonation("btn10", 10);
+    setQuickDonation("btn20", 20);
+    setQuickDonation("btn50", 50);
+    setQuickDonation("btn100", 100);
+
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalClose = document.getElementById("modalClose");
+
+    function openModal(src, title){
+      modalImg.src = src;
+      modalTitle.textContent = title || "Imagem";
+      modal.classList.add("show");
+    }
+    function closeModal(){
+      modal.classList.remove("show");
+      modalImg.src = "";
+    }
+
+    document.querySelectorAll(".zoomable").forEach(el => {
+      el.addEventListener("click", () => openModal(el.src, el.dataset.title || "Imagem"));
+    });
+
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
   </script>
 </body>
 </html>
