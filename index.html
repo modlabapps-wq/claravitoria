@@ -4,76 +4,83 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Campanha Solidária • Clara Vitória</title>
-  <meta name="description" content="Ajude a Clara Vitória (3 anos) com leite para alimentação. Doe via PIX e compartilhe."/>
+  <meta name="description" content="Ajude a Clara Vitória com Fortini Plus Sem Sabor 400g. Doe via PIX ou compre e entregue. Compartilhe o link."/>
   <meta name="theme-color" content="#0ea5e9"/>
-
-  <!-- Open Graph (melhora o preview ao compartilhar) -->
-  <meta property="og:title" content="Campanha Solidária • Clara Vitória" />
-  <meta property="og:description" content="Ajude com leite para alimentação. Doe via PIX e compartilhe." />
-  <meta property="og:type" content="website" />
-  <!-- Dica: depois que publicar, você pode colocar aqui a URL do site e uma imagem de capa -->
-  <!-- <meta property="og:url" content="https://SEUUSUARIO.github.io/SEUREPO/" /> -->
-  <!-- <meta property="og:image" content="https://SEUUSUARIO.github.io/SEUREPO/assets/capa.jpg" /> -->
 
   <style>
     :root{
-      --bg:#071019;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.10);
+      --bg0:#06101a;
+      --bg1:#04080f;
+      --card: rgba(255,255,255,.07);
+      --card2: rgba(255,255,255,.05);
       --border: rgba(255,255,255,.14);
-      --text:#eaf2ff;
-      --muted: rgba(234,242,255,.72);
+      --text:#eef4ff;
+      --muted: rgba(238,244,255,.74);
+      --muted2: rgba(238,244,255,.58);
       --brand:#22c55e;
       --brand2:#0ea5e9;
       --danger:#fb7185;
-      --warn:#fbbf24;
       --radius:18px;
       --shadow: 0 18px 60px rgba(0,0,0,.45);
     }
+
     *{ box-sizing:border-box; }
+    html, body{ height:100%; }
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
-      background: radial-gradient(1200px 800px at 30% 0%, rgba(14,165,233,.18), transparent 60%),
-                  radial-gradient(900px 600px at 80% 10%, rgba(34,197,94,.14), transparent 55%),
-                  linear-gradient(180deg, #060d15, var(--bg));
-      color:var(--text);
-      min-height:100vh;
+      color: var(--text);
+      background:
+        radial-gradient(900px 650px at 18% 0%, rgba(14,165,233,.22), transparent 60%),
+        radial-gradient(850px 620px at 88% 12%, rgba(34,197,94,.16), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
     }
+
     a{ color:inherit; text-decoration:none; }
+    img, video{ max-width:100%; display:block; }
+
     .wrap{
       max-width: 1120px;
       margin: 0 auto;
-      padding: 22px 16px 54px;
+      padding: 18px 14px 50px;
     }
-    header{
+
+    .topbar{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap: 12px;
-      padding: 10px 2px 18px;
+      gap:12px;
       flex-wrap:wrap;
+      padding: 10px 2px 14px;
     }
+
     .badge{
       display:inline-flex;
       align-items:center;
       gap:10px;
       padding:10px 14px;
       border:1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      border-radius:999px;
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+      border-radius: 999px;
       box-shadow: 0 10px 30px rgba(0,0,0,.25);
-      font-weight:800;
-      letter-spacing:.2px;
+      font-weight: 900;
+      letter-spacing: .2px;
+      white-space: nowrap;
     }
+
     .dot{
       width:10px;height:10px;border-radius:50%;
       background: var(--brand2);
       box-shadow: 0 0 0 6px rgba(14,165,233,.18);
+      flex: 0 0 auto;
     }
-    .top-actions{
-      display:flex; gap:10px; flex-wrap:wrap;
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
     }
+
     .btn{
       cursor:pointer;
       border:1px solid var(--border);
@@ -81,7 +88,7 @@
       color: var(--text);
       padding: 10px 14px;
       border-radius: 12px;
-      font-weight: 800;
+      font-weight: 900;
       transition: .15s ease;
       display:inline-flex;
       align-items:center;
@@ -101,15 +108,12 @@
       border-color: rgba(251,113,133,.45);
       background: linear-gradient(180deg, rgba(251,113,133,.22), rgba(251,113,133,.08));
     }
-    .btn.warn{
-      border-color: rgba(251,191,36,.45);
-      background: linear-gradient(180deg, rgba(251,191,36,.22), rgba(251,191,36,.08));
-    }
 
     .grid{
       display:grid;
       grid-template-columns: 1.22fr .78fr;
-      gap: 16px;
+      gap: 14px;
+      align-items:start;
     }
     @media (max-width: 980px){
       .grid{ grid-template-columns:1fr; }
@@ -117,181 +121,212 @@
 
     .card{
       border:1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      background: linear-gradient(180deg, var(--card), var(--card2));
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
     }
-    .card .inner{ padding: 16px; }
+    .inner{ padding: 16px; }
 
     .hero{
       display:grid;
       grid-template-columns: 190px 1fr;
-      gap:16px;
+      gap: 16px;
       align-items:center;
     }
-    @media (max-width: 560px){
+    @media (max-width: 640px){
       .hero{ grid-template-columns:1fr; }
     }
 
     .photo{
-      width:190px;height:190px;border-radius:18px;
+      width:190px; height:190px;
+      border-radius: 18px;
       border:1px solid var(--border);
-      background: rgba(255,255,255,.05);
       overflow:hidden;
-      position:relative;
+      background: rgba(255,255,255,.05);
     }
-    .photo img{
-      width:100%; height:100%; object-fit:cover;
-      display:block;
+    @media (max-width: 640px){
+      .photo{ width:100%; height: 320px; }
     }
 
-    h1{ margin:0; font-size: clamp(22px, 3vw, 34px); line-height:1.12; }
-    .sub{ color:var(--muted); margin-top:10px; line-height:1.6; font-size: 15px; }
+    h1{
+      margin:0;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+    .lead{
+      margin-top:10px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 15px;
+    }
 
-    .pill-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+    .pillrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 12px;
+    }
     .pill{
       padding:8px 12px;
-      border-radius:999px;
+      border-radius: 999px;
       border:1px solid var(--border);
       background: rgba(255,255,255,.06);
       color: var(--muted);
-      font-weight:800;
+      font-weight: 900;
       font-size: 13px;
     }
 
     .section-title{
+      margin: 0 0 10px;
       font-size: 13px;
-      color: rgba(234,242,255,.66);
       letter-spacing: .18em;
       text-transform: uppercase;
-      margin: 0 0 10px;
-      font-weight: 900;
+      color: rgba(238,244,255,.68);
+      font-weight: 950;
     }
 
-    .progress-wrap{
-      margin-top:14px;
+    .progress{
+      margin-top: 14px;
       border:1px solid var(--border);
       background: rgba(255,255,255,.05);
       border-radius: 16px;
       padding: 14px;
     }
+
     .bar{
       height: 14px;
       border-radius: 999px;
       background: rgba(255,255,255,.10);
-      overflow:hidden;
       border:1px solid rgba(255,255,255,.10);
+      overflow:hidden;
     }
     .bar > div{
-      height: 100%;
+      height:100%;
       width: 0%;
-      background: linear-gradient(90deg, rgba(14,165,233,.95), rgba(34,197,94,.95));
       border-radius: 999px;
+      background: linear-gradient(90deg, rgba(14,165,233,.95), rgba(34,197,94,.95));
       transition: width .6s ease;
     }
-    .numbers{
+    .nums{
       display:flex;
       justify-content:space-between;
       gap:10px;
+      flex-wrap:wrap;
       margin-top:10px;
       color: var(--muted);
-      font-weight:800;
-      flex-wrap:wrap;
+      font-weight: 900;
     }
-    .numbers b{ color: var(--text); }
+    .nums b{ color: var(--text); }
 
-    .small{ font-size: 13px; color: var(--muted); line-height:1.55; }
-    .list{
-      margin:0; padding-left: 18px;
-      color: var(--muted);
-      line-height:1.65;
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 640px){
+      .split{ grid-template-columns:1fr; }
     }
 
-    details{
+    .product{
       border:1px solid var(--border);
       background: rgba(255,255,255,.04);
-      border-radius: 14px;
-      padding: 12px 14px;
+      border-radius: 16px;
+      overflow:hidden;
     }
-    details summary{
-      cursor:pointer;
-      font-weight:900;
-      color: var(--text);
-      outline:none;
+    .product img{
+      width:100%;
+      height: 230px;
+      object-fit: contain;
+      background: rgba(0,0,0,.20);
+      padding: 10px;
+    }
+    .product .meta{
+      padding: 12px 12px 14px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+    .product h3{
+      margin:0;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+    }
+    .product .price{
+      margin-top:8px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-weight: 800;
+      font-size: 13px;
     }
 
-    .pixkey{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      padding: 12px 12px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: rgba(0,0,0,.25);
-      color: var(--text);
-      overflow:auto;
-      white-space:nowrap;
+    .pixbox{
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.22);
+      border-radius: 16px;
+      padding: 12px;
     }
+    .pixkey{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-weight: 900;
+      word-break: break-all;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .small{ color: var(--muted); font-size: 13px; line-height: 1.6; }
 
     .media-grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
+      margin-top: 8px;
     }
-    @media (max-width: 720px){
-      .media-grid{ grid-template-columns:1fr; }
+    @media (max-width: 740px){
+      .media-grid{ grid-template-columns: 1fr; }
     }
-    .media-card{
+    .media{
       border:1px solid var(--border);
       background: rgba(255,255,255,.04);
       border-radius: 16px;
       overflow:hidden;
     }
-    .media-card img{
+    .media img{
       width:100%;
-      height: 260px;
-      object-fit:cover;
-      display:block;
-      background: rgba(255,255,255,.04);
+      height: 280px;
+      object-fit: cover;
+      background: rgba(0,0,0,.18);
     }
-    .media-card video{
+    .media video{
       width:100%;
-      display:block;
-      background: rgba(0,0,0,.25);
+      background: rgba(0,0,0,.18);
     }
     .cap{
       padding: 10px 12px;
-      color: rgba(234,242,255,.70);
-      font-weight: 800;
-      font-size: 13px;
       border-top: 1px solid rgba(255,255,255,.10);
+      color: rgba(238,244,255,.74);
+      font-weight: 900;
+      font-size: 13px;
     }
 
-    .callout{
-      border:1px solid rgba(34,197,94,.35);
-      background: linear-gradient(180deg, rgba(34,197,94,.18), rgba(34,197,94,.06));
-      border-radius: 16px;
-      padding: 14px;
-    }
-
-    .copybox{
+    .sharebox{
       border:1px solid var(--border);
-      background: rgba(0,0,0,.25);
+      background: rgba(0,0,0,.22);
       border-radius: 16px;
       padding: 12px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-size: 13px;
+      line-height: 1.6;
       color: var(--text);
       white-space: pre-wrap;
       word-break: break-word;
-      line-height: 1.55;
-      font-size: 13px;
     }
 
     footer{
-      margin-top:18px;
-      color: rgba(234,242,255,.55);
-      font-size: 12px;
-      line-height:1.55;
       text-align:center;
+      color: rgba(238,244,255,.55);
+      font-size: 12px;
+      line-height: 1.6;
+      padding: 16px 6px 0;
     }
 
     .toast{
@@ -299,12 +334,12 @@
       left: 50%;
       bottom: 16px;
       transform: translateX(-50%);
-      background: rgba(0,0,0,.68);
+      background: rgba(0,0,0,.72);
       border: 1px solid rgba(255,255,255,.16);
       padding: 10px 14px;
       border-radius: 999px;
       color: var(--text);
-      font-weight: 900;
+      font-weight: 950;
       opacity: 0;
       pointer-events:none;
       transition: .2s ease;
@@ -316,263 +351,180 @@
 
 <body>
   <div class="wrap">
-    <header>
-      <div class="badge"><span class="dot"></span> Campanha Solidária • São Paulo/SP</div>
-      <div class="top-actions">
-        <a class="btn info" id="btnShare" href="#" role="button">📣 Compartilhar</a>
+    <div class="topbar">
+      <div class="badge"><span class="dot"></span> Campanha Solidária • Clara Vitória • São Paulo/SP</div>
+      <div class="actions">
+        <a class="btn info" id="btnShare" href="#">📣 Compartilhar</a>
         <a class="btn primary" id="btnWhats" href="#" target="_blank" rel="noopener">💬 WhatsApp</a>
-        <a class="btn warn" id="btnCopyAll" href="#" role="button">📄 Copiar texto pronto</a>
       </div>
-    </header>
+    </div>
 
     <div class="grid">
-      <!-- COLUNA ESQUERDA -->
-      <section class="card">
+      <main class="card">
         <div class="inner">
           <div class="hero">
             <div class="photo">
-              <img id="heroImg" src="assets/clara-foto-1.jpg" alt="Foto da Clara Vitória"
-                   onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=&quot;padding:14px;color:rgba(234,242,255,.75);font-weight:900;line-height:1.45;&quot;>Adicione uma foto em <b>assets/clara-foto-1.jpg</b><br/>ou mantenha o nome original e ajuste no CONFIG.</div>';">
+              <img src="Clara-foto-2.jpeg" alt="Clara Vitória" />
             </div>
-
             <div>
               <h1>Ajude a Clara Vitória de Jesus Melo 💙</h1>
 
-              <div class="sub" id="story">
-                A Clara Vitória tem <b>3 anos e 11 meses</b> e enfrenta uma condição rara chamada
-                <b>Síndrome de Moebius</b>, uma desordem neurológica congênita que afeta principalmente os nervos
-                cranianos <b>VI</b> e <b>VII</b>. Isso pode causar <b>paralisia facial</b>, dificuldade de movimentar os olhos
-                lateralmente e também <b>dificuldades na alimentação e fala</b>.
-                <br/><br/>
-                Hoje a Clara se alimenta por <b>sonda</b>, porque não consegue se alimentar pela boca. Por isso estamos fazendo
-                esta campanha para comprar <b>leites</b> para a alimentação dela.
-                <br/><br/>
-                Qualquer valor ajuda muito — e se você não puder doar, <b>compartilhar</b> já faz uma diferença enorme.
+              <div class="lead">
+                A Clara Vitória tem <b>3 anos e 11 meses</b> e possui <b>Síndrome de Moebius</b>, uma condição neurológica congênita rara
+                que pode afetar os nervos cranianos (especialmente VI e VII), causando <b>paralisia facial</b>, dificuldade no movimento lateral dos olhos
+                e <b>dificuldades na alimentação e fala</b>.
+                <br><br>
+                Atualmente, a Clara se alimenta por <b>sonda</b>, e estamos arrecadando para comprar o leite que ela usa:
+                <b>Fortini Plus Sem Sabor 400g</b>.
               </div>
 
-              <div class="pill-row">
+              <div class="pillrow">
+                <span class="pill">👩‍👧 Responsável: Maria Luiza Melo Nogueira</span>
                 <span class="pill">📍 São Paulo, SP</span>
                 <span class="pill">🎯 Meta: R$ <span id="goal">400,00</span></span>
-                <span class="pill">👩‍👧 Responsável: Maria Luiza Melo Nogueira</span>
               </div>
 
-              <div class="progress-wrap">
-                <div class="section-title">Progresso da campanha</div>
+              <div class="progress">
+                <div class="section-title">Progresso</div>
                 <div class="bar" aria-label="Barra de progresso"><div id="barFill"></div></div>
-                <div class="numbers">
+                <div class="nums">
                   <span>Arrecadado: <b>R$ <span id="raised">20,00</span></b></span>
                   <span>Falta: <b>R$ <span id="missing">380,00</span></b></span>
                 </div>
-                <div class="small" style="margin-top:8px;">
-                  Campanha para compra de <b>leites</b> (alimentação por sonda).
+              </div>
+            </div>
+          </div>
+
+          <div style="height:14px;"></div>
+
+          <div class="split">
+            <section class="product">
+              <img src="fortini-plus.jpg" alt="Fortini Plus Sem Sabor 400g" />
+              <div class="meta">
+                <h3>Fortini Plus • Sem Sabor • 400g</h3>
+                <div class="price">
+                  Preço médio de referência: <b>~R$ 86,00</b> (pode variar por loja e promoções).<br>
+                  Se preferir, você pode <b>comprar e entregar</b> — fale conosco no WhatsApp.
+                </div>
+                <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+                  <a class="btn primary" id="btnBuyWhats" href="#" target="_blank" rel="noopener">🛒 Quero comprar e entregar</a>
                 </div>
               </div>
+            </section>
+
+            <section class="card" style="box-shadow:none; background:transparent; border:none; padding:0;">
+              <div class="section-title">Doe via PIX</div>
+              <div class="pixbox">
+                <div class="small">
+                  Chave PIX (copie e cole no app do seu banco):
+                </div>
+                <div class="pixkey" id="pixKey">marialuizamele20@gmail.com</div>
+
+                <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+                  <button class="btn primary" id="btnCopyPix">📋 Copiar PIX</button>
+                  <a class="btn info" id="btnWhatsPix" href="#" target="_blank" rel="noopener">💬 Enviar PIX no WhatsApp</a>
+                </div>
+
+                <div class="small" style="margin-top:10px;">
+                  Caso queira confirmar a história ou tirar dúvidas, pode falar direto no WhatsApp.
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div style="height:16px;"></div>
+
+          <div class="section-title">Fotos e vídeos</div>
+          <div class="media-grid">
+            <div class="media">
+              <img src="Clara-foto-1.jpeg" alt="Clara Vitória - foto 1" />
+              <div class="cap">📷 Foto 1</div>
+            </div>
+            <div class="media">
+              <img src="Clara-foto-2.jpeg" alt="Clara Vitória - foto 2" />
+              <div class="cap">📷 Foto 2</div>
+            </div>
+            <div class="media">
+              <video controls preload="metadata">
+                <source src="Clara-video-1.mp4" type="video/mp4">
+              </video>
+              <div class="cap">🎥 Vídeo 1</div>
+            </div>
+            <div class="media">
+              <video controls preload="metadata">
+                <source src="Clara-video-2.mp4" type="video/mp4">
+              </video>
+              <div class="cap">🎥 Vídeo 2</div>
             </div>
           </div>
 
-          <div style="margin-top:14px;">
-            <div class="section-title">Sobre a Síndrome de Moebius (resumo)</div>
-            <div class="small">
-              A Síndrome de Moebius é <b>rara</b> e <b>não é progressiva</b>, mas costuma exigir acompanhamento
-              <b>multidisciplinar</b> (ex.: fonoaudiologia, fisioterapia, terapia ocupacional, entre outros), para melhorar
-              qualidade de vida e funções como alimentação e fala.
-            </div>
+          <div style="height:16px;"></div>
+
+          <div class="section-title">Compartilhar</div>
+          <div class="sharebox" id="shareBox"></div>
+          <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn info" id="btnCopyMsg">📋 Copiar texto</button>
+            <a class="btn primary" id="btnSendMsg" href="#" target="_blank" rel="noopener">🚀 Enviar no WhatsApp</a>
           </div>
-
-          <div style="margin-top:14px;">
-            <details open>
-              <summary>🧩 Sintomas que podem acontecer (geral)</summary>
-              <div class="small" style="margin-top:10px;">
-                Cada criança é única, mas de forma geral a Síndrome de Moebius pode estar associada a:
-              </div>
-              <ul class="list">
-                <li>Paralisia ou fraqueza facial (dificuldade de sorrir, franzir a testa, expressões faciais reduzidas).</li>
-                <li>Dificuldade de mover os olhos lateralmente (olhar para os lados).</li>
-                <li>Dificuldades na alimentação (sucção/deglutição) e possível atraso na fala.</li>
-                <li>Ressecamento ocular (por piscar menos) e necessidade de cuidados com os olhos em alguns casos.</li>
-                <li>Possíveis alterações ortopédicas associadas (varia de caso para caso).</li>
-              </ul>
-              <div class="small" style="margin-top:10px;">
-                *Lista informativa. O acompanhamento deve ser feito com a equipe de saúde.
-              </div>
-            </details>
-          </div>
-
-          <div style="margin-top:14px;">
-            <div class="section-title">Fotos e vídeos</div>
-
-            <div class="media-grid">
-              <div class="media-card">
-                <img id="img1" src="assets/clara-foto-1.jpg" alt="Clara Vitória - foto 1"
-                     onerror="this.src='assets/Clara%20foto%201.jpeg'">
-                <div class="cap">📷 Clara Vitória • Foto 1</div>
-              </div>
-
-              <div class="media-card">
-                <img id="img2" src="assets/clara-foto-2.jpg" alt="Clara Vitória - foto 2"
-                     onerror="this.src='assets/Clara%20foto%202.jpeg'">
-                <div class="cap">📷 Clara Vitória • Foto 2</div>
-              </div>
-
-              <div class="media-card">
-                <video id="vid1" controls preload="metadata">
-                  <source src="assets/clara-video-1.mp4" type="video/mp4">
-                </video>
-                <div class="cap">🎥 Vídeo 1</div>
-              </div>
-
-              <div class="media-card">
-                <video id="vid2" controls preload="metadata">
-                  <source src="assets/clara-video-2.mp4" type="video/mp4">
-                </video>
-                <div class="cap">🎥 Vídeo 2</div>
-              </div>
-            </div>
-
-            <div class="small" style="margin-top:10px;">
-              Se os vídeos não aparecerem, mantenha os nomes originais e use:
-              <b>assets/Clara%20video%201.mp4</b> e <b>assets/Clara%20video%202.mp4</b> (ou renomeie para os nomes sugeridos).
-            </div>
-          </div>
-
-          <div style="margin-top:14px;" class="callout">
-            <div class="section-title" style="margin-bottom:8px;color:rgba(234,242,255,.78);">Como você pode ajudar</div>
-            <ul class="list" style="color:rgba(234,242,255,.76)">
-              <li>Doando qualquer valor via PIX.</li>
-              <li>Compartilhando este link em grupos de WhatsApp, Instagram, Facebook e com amigos.</li>
-              <li>Se você conhece alguém que possa ajudar com doação de leite, também vale muito.</li>
-            </ul>
-          </div>
-
-          <div style="margin-top:14px;">
-            <details open>
-              <summary>📌 Transparência (atualizações)</summary>
-              <div class="small" style="margin-top:10px;">
-                Você pode atualizar aqui quando entrar doação (ou postar comprovantes recortados/sem dados sensíveis).
-              </div>
-              <ul class="list">
-                <li>✅ Campanha ativa — meta R$ 400,00</li>
-                <li>🔁 Atualizações conforme entrar doação</li>
-                <li>📎 Sugestão: criar uma imagem “Atualização” e adicionar em <b>assets/</b></li>
-              </ul>
-            </details>
-          </div>
-
-          <div style="margin-top:14px;">
-            <div class="section-title">Texto pronto para divulgar</div>
-            <div class="copybox" id="shareCopyBox"></div>
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
-              <button class="btn info" id="btnCopyMsg">📋 Copiar mensagem</button>
-              <a class="btn primary" id="btnWhatsMsg" href="#" target="_blank" rel="noopener">🚀 Enviar no WhatsApp</a>
-            </div>
-            <div class="small" style="margin-top:10px;">
-              Dica: poste nos <b>horários</b> 07h–09h, 12h–14h e 19h–22h (geralmente é quando mais gente vê).
-            </div>
+          <div class="small" style="margin-top:10px;">
+            Link do site: <span id="siteLink" style="font-weight:900;"></span>
           </div>
         </div>
-      </section>
+      </main>
 
-      <!-- COLUNA DIREITA -->
       <aside class="card">
         <div class="inner">
-          <div class="section-title">Doe via PIX</div>
-
-          <div class="small">
-            Responsável: <b>Maria Luiza Melo Nogueira</b><br/>
-            Objetivo: <b>comprar leites para alimentação</b>
-          </div>
-
-          <div style="height:10px;"></div>
-
-          <div class="small">Chave PIX (copie e cole no seu banco):</div>
-          <div class="pixkey" id="pixKey">marialuizamele20@gmail.com</div>
-
-          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
-            <button class="btn primary" id="btnCopyPix">📋 Copiar PIX</button>
-            <a class="btn info" id="btnWhatsPix" href="#" target="_blank" rel="noopener">💬 Enviar PIX no WhatsApp</a>
-          </div>
-
-          <div style="height:14px;"></div>
-
-          <details open>
-            <summary>📣 Ideias para divulgar</summary>
-            <ul class="list" style="margin-top:10px;">
-              <li>Postar o link do site nos seus status (WhatsApp) 2x ao dia.</li>
-              <li>Pedir para 5 amigos compartilharem em grupos diferentes.</li>
-              <li>Se tiver Instagram, postar nos stories com “Link na bio”.</li>
-              <li>Fazer um post curto: “meta pequena, ajuda enorme”.</li>
-              <li>Atualizar o arrecadado (isso aumenta a confiança).</li>
-            </ul>
-          </details>
-
-          <div style="height:14px;"></div>
-
-          <details>
-            <summary>🧾 Nota importante</summary>
-            <div class="small" style="margin-top:10px;">
-              Evite publicar documentos completos e dados sensíveis. Se for postar comprovantes, recorte/oculte informações desnecessárias.
-            </div>
-          </details>
-
-          <div style="height:14px;"></div>
-
           <div class="section-title">Contato</div>
-          <a class="btn danger" id="btnContact" href="#" target="_blank" rel="noopener">☎️ Falar no WhatsApp</a>
-          <div class="small" style="margin-top:10px;">
-            WhatsApp: <b>+55 11 99335-9677</b>
+          <div class="small">
+            WhatsApp: <b>+55 11 99335-9677</b><br>
+            Responsável: <b>Maria Luiza Melo Nogueira</b>
+          </div>
+
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn primary" id="btnContact" href="#" target="_blank" rel="noopener">💬 Falar no WhatsApp</a>
+            <button class="btn" id="btnCopyLink">🔗 Copiar link do site</button>
+          </div>
+
+          <div style="height:14px;"></div>
+
+          <div class="section-title">Objetivo</div>
+          <div class="small">
+            Comprar <b>Fortini Plus Sem Sabor 400g</b> para alimentação por sonda.
+            Se você preferir, pode comprar o leite e combinar a entrega pelo WhatsApp.
+          </div>
+
+          <div style="height:14px;"></div>
+
+          <div class="section-title">Chave PIX</div>
+          <div class="pixbox">
+            <div class="pixkey">marialuizamele20@gmail.com</div>
           </div>
         </div>
       </aside>
     </div>
 
     <footer>
-      Feito para ajudar a Clara Vitória • Hospedado no GitHub Pages • <span id="year"></span>
+      Campanha Solidária • Clara Vitória • <span id="year"></span>
     </footer>
   </div>
 
   <div class="toast" id="toast">Copiado!</div>
 
   <script>
-    // =========================
-    // CONFIG (você pode ajustar aqui quando precisar)
-    // =========================
     const CONFIG = {
-      childName: "Clara Vitória de Jesus Melo",
-      age: "3 anos e 11 meses",
-      city: "São Paulo, SP",
-      motherName: "Maria Luiza Melo Nogueira",
-      objectiveShort: "comprar leites para alimentação",
-      goal: 400,     // meta
-      raised: 20,    // arrecadado
+      goal: 400,
+      raised: 20,
       pixKey: "marialuizamele20@gmail.com",
-      whatsappNumber: "5511993359677",
-
-      // Arquivos (recomendado renomear)
-      assets: {
-        hero: "assets/clara-foto-1.jpg",
-        img1: "assets/clara-foto-1.jpg",
-        img2: "assets/clara-foto-2.jpg",
-        vid1: "assets/clara-video-1.mp4",
-        vid2: "assets/clara-video-2.mp4",
-
-        // Alternativa se você manter o nome original com espaço:
-        img1Original: "assets/Clara%20foto%201.jpeg",
-        img2Original: "assets/Clara%20foto%202.jpeg",
-        vid1Original: "assets/Clara%20video%201.mp4",
-        vid2Original: "assets/Clara%20video%202.mp4",
-      },
-
-      syndromeText:
-        "A Síndrome de Moebius é uma desordem neurológica congênita rara, caracterizada pela paralisia facial, principalmente devido à ausência ou subdesenvolvimento dos nervos cranianos VI (abducente) e VII (facial). Resulta na falta de expressões faciais, dificuldade em mover os olhos lateralmente e dificuldades na alimentação/fala. A condição não é progressiva, mas exige tratamento multidisciplinar."
+      whatsapp: "5511993359677",
+      motherName: "Maria Luiza Melo Nogueira",
+      childName: "Clara Vitória de Jesus Melo",
+      productName: "Fortini Plus Sem Sabor 400g"
     };
 
-    // =========================
-    // Helpers
-    // =========================
     const fmt = (n) => n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
     const toast = document.getElementById("toast");
-    const showToast = (msg="Copiado!") => {
+    const showToast = (msg) => {
       toast.textContent = msg;
       toast.classList.add("show");
       setTimeout(() => toast.classList.remove("show"), 1400);
@@ -593,16 +545,19 @@
       }
     }
 
-    function shareMessage(){
+    function buildShareText(){
       const url = location.href;
+      const missing = Math.max(0, CONFIG.goal - CONFIG.raised);
+
       return (
 `Campanha Solidária • Ajude a ${CONFIG.childName} 💙
 
-A ${CONFIG.childName} (${CONFIG.age}) tem Síndrome de Moebius e se alimenta por sonda. Estamos arrecadando para comprar leites para a alimentação.
+A Clara Vitória (3 anos e 11 meses) tem Síndrome de Moebius e se alimenta por sonda.
+Estamos arrecadando para comprar o leite ${CONFIG.productName}.
 
 Meta: R$ ${fmt(CONFIG.goal)}
 Arrecadado: R$ ${fmt(CONFIG.raised)}
-Falta: R$ ${fmt(Math.max(0, CONFIG.goal - CONFIG.raised))}
+Falta: R$ ${fmt(missing)}
 
 PIX (chave): ${CONFIG.pixKey}
 Responsável: ${CONFIG.motherName}
@@ -613,67 +568,51 @@ Se não puder doar, por favor compartilhe 🙏`
       );
     }
 
-    // =========================
-    // Render (valores)
-    // =========================
-    document.getElementById("year").textContent = new Date().getFullYear();
+    const goalEl = document.getElementById("goal");
+    const raisedEl = document.getElementById("raised");
+    const missingEl = document.getElementById("missing");
+    const barFill = document.getElementById("barFill");
 
-    document.getElementById("goal").textContent = fmt(CONFIG.goal);
-    document.getElementById("raised").textContent = fmt(CONFIG.raised);
+    goalEl.textContent = fmt(CONFIG.goal);
+    raisedEl.textContent = fmt(CONFIG.raised);
 
     const missing = Math.max(0, CONFIG.goal - CONFIG.raised);
-    document.getElementById("missing").textContent = fmt(missing);
+    missingEl.textContent = fmt(missing);
 
     const pct = (CONFIG.goal > 0) ? Math.max(0, Math.min(100, (CONFIG.raised / CONFIG.goal) * 100)) : 0;
-    document.getElementById("barFill").style.width = pct.toFixed(1) + "%";
+    barFill.style.width = pct.toFixed(1) + "%";
 
-    document.getElementById("pixKey").textContent = CONFIG.pixKey;
+    const shareBox = document.getElementById("shareBox");
+    const siteLink = document.getElementById("siteLink");
+    shareBox.textContent = buildShareText();
+    siteLink.textContent = location.href;
 
-    // Mídias (tenta nomes recomendados; se falhar, usa os originais com %20)
-    const heroImg = document.getElementById("heroImg");
-    heroImg.src = CONFIG.assets.hero;
+    document.getElementById("btnWhats").href =
+      `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(buildShareText())}`;
 
-    const img1 = document.getElementById("img1");
-    img1.src = CONFIG.assets.img1;
-    img1.onerror = () => { img1.src = CONFIG.assets.img1Original; };
+    document.getElementById("btnContact").href =
+      `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent("Olá! Quero ajudar na campanha da Clara Vitória. Como posso contribuir?")}`;
 
-    const img2 = document.getElementById("img2");
-    img2.src = CONFIG.assets.img2;
-    img2.onerror = () => { img2.src = CONFIG.assets.img2Original; };
+    document.getElementById("btnBuyWhats").href =
+      `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent("Olá! Eu prefiro comprar o " + CONFIG.productName + " e entregar. Como posso combinar a entrega?")}`;
 
-    const vid1 = document.querySelector("#vid1 source");
-    vid1.src = CONFIG.assets.vid1;
-    document.getElementById("vid1").load();
-    document.getElementById("vid1").addEventListener("error", () => {
-      vid1.src = CONFIG.assets.vid1Original;
-      document.getElementById("vid1").load();
-    }, { once:true });
+    document.getElementById("btnWhatsPix").href =
+      `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent("PIX para doação (Clara Vitória): " + CONFIG.pixKey)}`;
 
-    const vid2 = document.querySelector("#vid2 source");
-    vid2.src = CONFIG.assets.vid2;
-    document.getElementById("vid2").load();
-    document.getElementById("vid2").addEventListener("error", () => {
-      vid2.src = CONFIG.assets.vid2Original;
-      document.getElementById("vid2").load();
-    }, { once:true });
+    document.getElementById("btnCopyPix").addEventListener("click", async () => {
+      await copyText(CONFIG.pixKey);
+      showToast("PIX copiado!");
+    });
 
-    // Caixa de texto pronto
-    const shareBox = document.getElementById("shareCopyBox");
-    shareBox.textContent = shareMessage();
-
-    // =========================
-    // Botões
-    // =========================
-    // Compartilhar (Web Share ou copia)
     document.getElementById("btnShare").addEventListener("click", async (ev) => {
       ev.preventDefault();
-      const text = shareMessage();
+      const text = buildShareText();
       try{
         if (navigator.share){
           await navigator.share({ title: "Campanha Solidária • Clara Vitória", text, url: location.href });
         } else {
           await copyText(text);
-          showToast("Texto de compartilhamento copiado!");
+          showToast("Texto copiado!");
         }
       }catch(err){
         await copyText(text);
@@ -681,40 +620,20 @@ Se não puder doar, por favor compartilhe 🙏`
       }
     });
 
-    // WhatsApp (geral)
-    document.getElementById("btnWhats").href =
-      `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(shareMessage())}`;
-
-    // Copiar PIX
-    document.getElementById("btnCopyPix").addEventListener("click", async () => {
-      await copyText(CONFIG.pixKey);
-      showToast("PIX copiado!");
-    });
-
-    // WhatsApp com PIX (manda chave)
-    document.getElementById("btnWhatsPix").href =
-      `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent("PIX para doação (Clara Vitória): " + CONFIG.pixKey)}`;
-
-    // Contato
-    document.getElementById("btnContact").href =
-      `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent("Olá! Quero ajudar na campanha da Clara Vitória. Como posso contribuir?")}`;
-
-    // Copiar mensagem pronta
     document.getElementById("btnCopyMsg").addEventListener("click", async () => {
-      await copyText(shareMessage());
-      showToast("Mensagem copiada!");
+      await copyText(buildShareText());
+      showToast("Texto copiado!");
     });
 
-    // Enviar mensagem pronta no WhatsApp
-    document.getElementById("btnWhatsMsg").href =
-      `https://wa.me/?text=${encodeURIComponent(shareMessage())}`;
+    document.getElementById("btnSendMsg").href =
+      `https://wa.me/?text=${encodeURIComponent(buildShareText())}`;
 
-    // Botão topo "Copiar texto pronto"
-    document.getElementById("btnCopyAll").addEventListener("click", async (ev) => {
-      ev.preventDefault();
-      await copyText(shareMessage());
-      showToast("Texto pronto copiado!");
+    document.getElementById("btnCopyLink").addEventListener("click", async () => {
+      await copyText(location.href);
+      showToast("Link copiado!");
     });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
